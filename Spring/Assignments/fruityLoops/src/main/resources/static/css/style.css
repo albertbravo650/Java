@@ -1,0 +1,26 @@
+@charset "ISO-8859-1";
+
+.container {
+	padding: 30px;
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+.table {
+	border: 20px solid pink;
+	width: 100%;
+	padding: 15px;
+}
+
+th {
+	text-align: start;
+}
+
+td {
+	border-top: 1px solid pink;
+	padding: 5px;
+}
+
+h1 {
+	color: pink;
+}

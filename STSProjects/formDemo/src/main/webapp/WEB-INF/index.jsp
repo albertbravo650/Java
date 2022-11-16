@@ -10,6 +10,7 @@
 </head>
 <body>
 	<h3>Login</h3>
+	<p><c:out value="${error}"></c:out></p>
 	<form action="/login" method="POST">
 		<label>Email:</label>
 		<input type="text" name="email">

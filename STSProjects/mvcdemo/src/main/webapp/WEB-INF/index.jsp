@@ -9,6 +9,7 @@
 <title>Books</title>
 </head>
 <body>
+	<a href="/books/new">Add Book</a>
 	<h1>All Books</h1>
 	<table>
 		<thead>

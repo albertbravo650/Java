@@ -23,16 +23,16 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotNull
-	@Size(min = 5, max = 200)
+	@Size(min = 5, max = 200, message="Must be atleast 5 characters")
 	private String title;
 	@NotNull
-	@Size(min = 5, max = 200)
+	@Size(min = 5, max = 200, message="Must be atleast 5 characters")
 	private String description;
 	@NotNull
-	@Size(min = 3, max = 40)
+	@Size(min = 3, max = 40, message="Must be atleast 3 characters")
 	private String language;
-	@NotNull
-	@Min(100)
+	@NotNull(message="Cannot be 0")
+	@Min(1)
 	private Integer numberOfPages;
 	//This will not allow the createdAt column to be updated after creation
 	@Column(updatable=false)
@@ -48,6 +48,14 @@ public class Book {
 	
 	public Long getId() {
 		return id;
+	}
+
+	public Book(@NotNull @Size(min = 5, max = 200) String title, @NotNull @Size(min = 5, max = 200) String description,
+			@NotNull @Size(min = 3, max = 40) String language, @NotNull @Min(100) Integer numberOfPages) {
+		this.title = title;
+		this.description = description;
+		this.language = language;
+		this.numberOfPages = numberOfPages;
 	}
 
 

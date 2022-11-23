@@ -1,0 +1,53 @@
+@charset "ISO-8859-1";
+
+body {
+	padding: 20px;
+}
+
+h1, h2 {
+	color: blue;
+}
+
+h2 {
+	margin-top: 30px;
+}
+
+.tableChart {
+	margin-top: 10px;
+	border: 2px solid black;
+	border-radius: 5px;
+}
+
+th, td {
+	text-align: center;
+}
+
+.actions {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+#deletebtn {
+	margin-left: 10px;
+}
+
+.formbox {
+	padding: 10px;
+}
+
+.formrow {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 15px;
+}
+
+.forminput {
+	width: 50%;
+	padding: 5px;
+}
+
+.submitbutton {
+	display: flex;
+	justify-content: end;
+}

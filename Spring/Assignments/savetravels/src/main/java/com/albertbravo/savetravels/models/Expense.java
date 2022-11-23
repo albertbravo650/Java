@@ -11,6 +11,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -32,8 +33,8 @@ public class Expense {
 	@Size(min = 3, max = 40, message="Must be atleast 3 characters")
 	private String vendor;
 	@NotNull(message="Cannot be 0")
-	@Min(1)
-	private Integer amount;
+	@Min(value=0)
+	private Float amount;
 	//This will not allow the createdAt column to be updated after creation
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -48,7 +49,7 @@ public class Expense {
 	public Expense(@NotNull @Size(min = 5, max = 200, message = "Must be atleast 5 characters") String name,
 			@NotNull @Size(min = 5, max = 200, message = "Must be atleast 5 characters") String description,
 			@NotNull @Size(min = 3, max = 40, message = "Must be atleast 3 characters") String vendor,
-			@NotNull(message = "Cannot be 0") @Min(1) Integer amount) {
+			@NotNull(message = "Cannot be 0") @NotBlank @Min(0) Float amount) {
 		super();
 		this.name = name;
 		this.description = description;
@@ -75,10 +76,10 @@ public class Expense {
 	public void setVendor(String vendor) {
 		this.vendor = vendor;
 	}
-	public Integer getAmount() {
+	public Float getAmount() {
 		return amount;
 	}
-	public void setAmount(Integer amount) {
+	public void setAmount(Float amount) {
 		this.amount = amount;
 	}
 	public Date getCreatedAt() {

@@ -15,3 +15,11 @@ h1 {
 	margin-bottom: 20px;
 }
 
+.detailrow {
+	display:flex;
+	margin-top: 10px;
+}
+
+h3 {
+	flex: 2;
+}

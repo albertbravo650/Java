@@ -34,9 +34,9 @@
 			<tbody>
 				<c:forEach var="expense" items="${expenses}">
 					<tr>
-						<td><a href="/expenses/${expense.id}"><c:out value="${expense.name}"/></a></td>
-						<td><c:out value="${expense.vendor}"/></td>
-						<td><c:out value="$ ${expense.amount}"/></td>
+						<td valign="middle"><a href="/expenses/${expense.id}"><c:out value="${expense.name}"/></a></td>
+						<td valign="middle"><c:out value="${expense.vendor}"/></td>
+						<td valign="middle"><c:out value="$ ${expense.amount}"/></td>
 						<td>
 							<div class="actions">
 								<a href="/expenses/${expense.id}/edit">edit</a>
@@ -67,7 +67,7 @@
 			<div class="formrow">
 				<form:label path="amount">Amount: </form:label>
 				<form:errors path="amount"/>
-				<form:input class="forminput" type="number" path="amount"/>
+				<form:input class="forminput" type="number" step="0.01" path="amount"/>
 			</div>
 			<div class="formrow">
 				<form:label path="description">Description: </form:label>

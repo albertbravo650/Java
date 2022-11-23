@@ -1,0 +1,33 @@
+@charset "ISO-8859-1";
+
+body {
+	padding: 20px;
+}
+
+h1 {
+	color: green;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.submitbutton {
+	display: flex;
+	justify-content: end;
+}
+
+.formrow {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 15px;
+}
+
+.forminput {
+	width: 50%;
+	padding: 5px;
+}
+

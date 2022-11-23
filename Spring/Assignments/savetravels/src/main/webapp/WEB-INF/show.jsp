@@ -21,9 +21,23 @@
 		<h1>Expense Details</h1>
 		<a href="/expenses">Go Back</a>
 	</div>
-	<h3>Expense Name: <c:out value="${expense.name}"/></h3>
-	<h3>Expense Description: <c:out value="${expense.description}"/></h3>
-	<h3>Vendor: <c:out value="${expense.vendor}"/></h3>
-	<h3>Amount Spent: <c:out value="${expense.amount}"/></h3>
+	<div class="detailbox">
+		<div class="detailrow">
+			<h3>Expense Name:</h3>
+			<h3><c:out value="${expense.name}"/></h3>
+		</div>
+		<div class="detailrow">
+			<h3>Expense Description:</h3>
+			<h3><c:out value="${expense.description}"/></h3>
+		</div>
+		<div class="detailrow">
+			<h3>Vendor:</h3>
+			<h3><c:out value="${expense.vendor}"/></h3>
+		</div>
+		<div class="detailrow">
+			<h3>Amount Spent:</h3>
+			<h3>$<c:out value="${expense.amount}"/></h3>
+		</div>
+	</div>
 </body>
 </html>

@@ -14,9 +14,11 @@
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>Add a University</h1>
+<h1>Edit a University</h1>
 <a href="/universities" class="btn btn-primary">All Universities</a>
 	<form:form action="/universities/new" method="post" modelAttribute="newUniversity">
+		<input type="hidden" name="_method" value="put"/>
+		<form:errors></form:errors>
 		<p>
 			<form:label path="city">City:</form:label>
 			<form:errors path="city"/>
@@ -49,7 +51,7 @@
 			<form:errors path="yearFounded"/>
 			<form:input path="yearFounded" type="number" min="1" max="999999999" step="1"/>
 		</p>
-		<input type="submit" value="Add University">
+		<input type="submit" value="Edit University">
 	</form:form>
 </body>
 </html>

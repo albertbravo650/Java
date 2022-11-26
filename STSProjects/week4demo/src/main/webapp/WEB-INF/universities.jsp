@@ -13,5 +13,29 @@
 </head>
 <body>
 	<p>This is the all universities page.</p>
+	<div class="container-fluid">
+		<h1>All universities</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>University name</th>
+					<th>City</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="university" items="${universities}">
+					<tr>
+						<td><c:out value="${university.id}"></c:out></td>
+						<td><a href="/universities/${university.id}"><c:out value="${university.name}"/></a></td>
+						<td><c:out value="${university.city}"></c:out></td>
+						<td><a href="/universities/${university.id}/edit">Edit</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<a href="/universities/new">Add University</a>
+	</div>
 </body>
 </html>

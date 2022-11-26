@@ -9,5 +9,5 @@ import com.albertbravo.week4demo.models.University;
 public interface UniversityRepository extends CrudRepository<University, Long> {
 	List<University> findAll();
 	
-	//List<University> findAllOrderByNameDesc();
+	List<University> findAllByOrderByNameDesc();
 }

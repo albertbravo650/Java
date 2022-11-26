@@ -28,12 +28,13 @@ public class UniversityService {
 	//Get one University
 	public University getOneUniversities(Long id) {
 		Optional<University> optionalUniversity = universityRepository.findById(id);
-		if(optionalUniversity.isPresent()) {
-			return optionalUniversity.get();
-		}
-		else {
-			return null;
-		}
+//		if(optionalUniversity.isPresent()) {
+//			return optionalUniversity.get();
+//		}
+//		else {
+//			return null;
+//		}
+		return optionalUniversity.orElseGet(() -> null);
 	}
 	
 	//Update a University

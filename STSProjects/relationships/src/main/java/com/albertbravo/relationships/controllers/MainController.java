@@ -28,13 +28,13 @@ public class MainController {
 	    return "showPerson.jsp";
 	}
 	
-//	@PostMapping("/licenses")
-//	public String licenses(@Valid @ModelAttribute("license") License license) {
-//	    // error handling with binding result omitted    
-//	    licenseService.create(license); // Already has the person!
-//	        
-//	    return "redirect:/persons";
-//	}
+	@PostMapping("/license/create")
+	public String licenses(@Valid @ModelAttribute("license") License license) {
+	    // error handling with binding result omitted    
+	    licenseService.create(license); // Already has the person!
+	        
+	    return "redirect:/persons";
+	}
 
 
 

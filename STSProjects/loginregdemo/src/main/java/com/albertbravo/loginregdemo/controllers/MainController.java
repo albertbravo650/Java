@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.albertbravo.loginregdemo.models.LoginUser;
 import com.albertbravo.loginregdemo.models.User;
 import com.albertbravo.loginregdemo.services.UserService;
 
@@ -21,7 +22,8 @@ public class MainController {
 	private UserService userServ;
 	
 	@GetMapping("/")
-	public String loginRegPage(@ModelAttribute("registerUser") User newUser) {
+	public String loginRegPage(@ModelAttribute("registerUser") User newUser,
+			@ModelAttribute("loginUser") LoginUser loginUser) {
 		return "loginreg.jsp";
 	}
 	

@@ -36,6 +36,7 @@ public class User {
     @Size(min=8, max=128, message="Password must be between 8 and 128 characters")
     private String password;
     
+    // will not be saved to db
     @Transient
     @NotEmpty(message="Confirm Password is required!")
     @Size(min=8, max=128, message="Confirm Password must be between 8 and 128 characters")
@@ -59,7 +60,9 @@ public class User {
         this.updatedAt = new Date();
     }
   
-    public User() {}
+    public User() {
+    	
+    }
 
 	public Long getId() {
 		return id;
@@ -116,8 +119,6 @@ public class User {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-    
-    // TODO - Don't forget to generate getters and setters
     
   
 }

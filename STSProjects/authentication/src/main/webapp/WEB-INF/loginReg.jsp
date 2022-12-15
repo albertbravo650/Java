@@ -50,7 +50,7 @@
 			</div>
 			<div class="col">
 				<p class="fs-3">Login:</p>
-				<form:form action="/login" method="post" modelAttribute="newLogin">
+				<form:form action="/login" method="post" modelAttribute="loginUser">
 					<div class="row my-4">
 						<form:label path="loginEmail" class="col-3">Email:</form:label>
 						<form:input path="loginEmail" class="col-8"/>

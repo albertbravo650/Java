@@ -1,5 +1,7 @@
 package com.albertbravo.bookclub.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -11,8 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.albertbravo.bookclub.models.Book;
 import com.albertbravo.bookclub.models.LoginUser;
 import com.albertbravo.bookclub.models.User;
+import com.albertbravo.bookclub.services.BookService;
 import com.albertbravo.bookclub.services.UserService;
 
 @Controller
@@ -21,6 +25,9 @@ public class MainController {
 	// Add once service is implemented:
 	@Autowired
 	private UserService userServ;
+	
+	@Autowired
+	private BookService bookServ;
  
 	@GetMapping("/")
 	public String index(@ModelAttribute("newUser") User newUser,
@@ -34,6 +41,8 @@ public class MainController {
 		if(session.getAttribute("userId") == null) {
 			return "redirect:/";
 		}
+		List<Book> books = bookServ.allBooks();
+		viewModel.addAttribute("books", books);
 		Long userId = (Long) session.getAttribute("userId");
 		viewModel.addAttribute("loggedUser", userServ.findById(userId));
 		return "home.jsp";

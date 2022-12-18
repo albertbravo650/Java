@@ -25,7 +25,7 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				<form:form action="/addBook" method="post" modelAttribute="newBook">
+				<form:form action="/books/add" method="post" modelAttribute="book">
 					<div class="row my-4">
 						<form:label path="title" class="col-3">Title:</form:label>
 						<form:input path="title" class="col-8"/>
@@ -41,6 +41,7 @@
 						<form:textarea path="thoughts" class="col-8"/>
 						<form:errors path="thoughts" class="text-danger offset-3"/>
 					</div>
+					<form:input type="hidden" path="creator" value="${loggedUser.id}"/>
 					<input class="btn btn-primary" type="submit" value="Submit">
 				</form:form>
 			</div>

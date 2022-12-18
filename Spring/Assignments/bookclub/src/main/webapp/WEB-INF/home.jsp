@@ -42,9 +42,9 @@
 						<c:forEach var="book" items="${books}">
 							<tr>
 								<td valign="middle"><c:out value="${book.id}"/></td>
-								<td valign="middle"><a href="/expenses/${book.id}"><c:out value="${book.title}"/></a></td>
+								<td valign="middle"><a href="/books/${book.id}"><c:out value="${book.title}"/></a></td>
 								<td valign="middle"><c:out value="${book.author}"/></td>
-								<td valign="middle"><c:out value=""/></td>
+								<td valign="middle"><c:out value="${book.creator.userName}"/></td>
 							</tr>
 						</c:forEach>
 					</tbody>

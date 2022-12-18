@@ -1,14 +1,19 @@
 package com.albertbravo.bookclub.controllers;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.albertbravo.bookclub.models.Book;
+import com.albertbravo.bookclub.models.User;
 import com.albertbravo.bookclub.services.BookService;
 import com.albertbravo.bookclub.services.UserService;
 
@@ -24,37 +29,37 @@ public class SecondController {
 	BookService bookServ;
 	
 	// show one book
-//	@GetMapping("/expenses/{id}")
-//	public String showOneExpense(Model model, @PathVariable("id") Long id) {
-//		Expense expense = expenseService.findExpense(id);
-//		model.addAttribute("expense", expense);
-//		return "show.jsp";
-//	}
+	@GetMapping("/books/{id}")
+	public String showOneBook(Model model, @PathVariable("id") Long id) {
+		Book book = bookServ.findBook(id);
+		model.addAttribute("book", book);
+		return "show.jsp";
+	}
 	
 	@GetMapping("/books/new")
-	public String newBook(@ModelAttribute("newBook") Book book, Model viewModel,
+	public String newBook(@ModelAttribute("book") Book book, Model viewModel,
 			HttpSession session) {
 		// if not logged in get sent back
 		if(session.getAttribute("userId") == null) {
 			return "redirect:/";
 		}
+		User loggedUser = userServ.findById((Long) session.getAttribute("userId"));
+		viewModel.addAttribute("loggedUser", loggedUser);
 		return "add.jsp";
 	}
 	
-//	@PostMapping("/expenses")
-//	public String create(
-//			@Valid @ModelAttribute("expense") Expense expense,
-//			BindingResult result, Model model) {
-//		List<Expense> expenses = expenseService.allExpenses();
-//		model.addAttribute("expenses", expenses);
-//		if(result.hasErrors()) {
-//			return "index.jsp";
-//		}
-//		else {
-//			expenseService.createExpense(expense);
-//			return "redirect:/expenses";
-//		}
-//	}
+	@PostMapping("/books/add")
+	public String add(
+			@Valid @ModelAttribute("book") Book book,
+			BindingResult result, Model model) {
+		if(result.hasErrors()) {
+			return "add.jsp";
+		}
+		else {
+			bookServ.createBook(book);
+			return "redirect:/books";
+		}
+	}
 			
 //	@GetMapping("/expenses/{id}/edit")
 //	public String edit(@PathVariable("id") Long id, Model model) {

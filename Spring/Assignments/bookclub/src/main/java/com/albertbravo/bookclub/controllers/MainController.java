@@ -45,6 +45,7 @@ public class MainController {
 		viewModel.addAttribute("books", books);
 		Long userId = (Long) session.getAttribute("userId");
 		viewModel.addAttribute("loggedUser", userServ.findById(userId));
+		System.out.println();
 		return "home.jsp";
 	}
  

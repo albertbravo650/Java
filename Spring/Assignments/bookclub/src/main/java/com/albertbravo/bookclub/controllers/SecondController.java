@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.albertbravo.bookclub.models.Book;
 import com.albertbravo.bookclub.models.User;
@@ -30,12 +32,17 @@ public class SecondController {
 	
 	// show one book
 	@GetMapping("/books/{id}")
-	public String showOneBook(Model model, @PathVariable("id") Long id) {
+	public String showOneBook(Model model, @PathVariable("id") Long id, HttpSession session) {
+		if(session.getAttribute("userId") == null) {
+			return "redirect:/";
+		}
 		Book book = bookServ.findBook(id);
 		model.addAttribute("book", book);
+		model.addAttribute("loggedUser", userServ.findById((Long) session.getAttribute("userId")));
 		return "show.jsp";
 	}
 	
+	// add a book
 	@GetMapping("/books/new")
 	public String newBook(@ModelAttribute("book") Book book, Model viewModel,
 			HttpSession session) {
@@ -61,29 +68,32 @@ public class SecondController {
 		}
 	}
 			
-//	@GetMapping("/expenses/{id}/edit")
-//	public String edit(@PathVariable("id") Long id, Model model) {
-//		Expense expense = expenseService.findExpense(id);
-//		model.addAttribute("expense", expense);
-//		return "edit.jsp";
-//	}
+	@GetMapping("/books/{id}/edit")
+	public String edit(@PathVariable("id") Long id, Model model, HttpSession session) {
+		if(session.getAttribute("userId") == null) {
+			return "redirect:/";
+		}
+		Book book = bookServ.findBook(id);
+		model.addAttribute("book", book);
+		return "edit.jsp";
+	}
 //		
-//	@PutMapping("/expenses/{id}")
-//	public String update(
-//			@Valid @ModelAttribute("expense") Expense expense,
-//			BindingResult result) {
-//		if(result.hasErrors()) {
-//			return "edit.jsp";
-//		}
-//		else {
-//			expenseService.updateExpense(expense);
-//			return "redirect:/expenses";
-//		}
-//	}
+	@PutMapping("/books/{id}")
+	public String update(
+			@Valid @ModelAttribute("book") Book book,
+			BindingResult result) {
+		if(result.hasErrors()) {
+			return "edit.jsp";
+		}
+		else {
+			bookServ.updateBook(book);
+			return "redirect:/books/{id}";
+		}
+	}
 //			
-//	@DeleteMapping("/expenses/{id}/delete")
-//	public String destroy(@PathVariable("id") Long id) {
-//		expenseService.deleteExpense(id);
-//		return "redirect:/expenses";
-//	}
+	@DeleteMapping("/books/{id}/delete")
+	public String destroy(@PathVariable("id") Long id) {
+		bookServ.deleteBook(id);
+		return "redirect:/books";
+	}
 }

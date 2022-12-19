@@ -29,8 +29,17 @@
 		<div class="row">
 			<p>Here are <c:out value="${book.creator.userName}"></c:out>'s thoughts:</p>
 		</div>
-		<div>
+		<div class="row">
 			<c:out value="${book.thoughts}"></c:out>
+		</div>
+		<div class="row">
+			<c:if test="${loggedUser.id == book.creator.id}">
+				<p><a href="/books/${book.id}/edit" class="btn btn-warning">edit</a></p>
+				<form action="/books/${book.id}/delete" method="post">
+					<input type="hidden" name="_method" value="delete">
+					<input type="submit" id="deletebtn" class="btn btn-danger" value="delete"/>
+				</form>
+			</c:if>
 		</div>
 	</div>
 </body>

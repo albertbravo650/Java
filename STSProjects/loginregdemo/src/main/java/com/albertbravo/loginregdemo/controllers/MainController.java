@@ -49,7 +49,7 @@ public class MainController {
 	
 	@PostMapping("/login")
 	public String loginUser() {
-		return null;
+		return "redirect:/dashboard";
 	}
 	
 	// Logout by clearing session and returning to loginreg page

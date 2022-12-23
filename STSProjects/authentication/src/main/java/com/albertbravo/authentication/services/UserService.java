@@ -23,8 +23,8 @@ public class UserService {
     }
     
     public User findByEmail(String email) {
-    	Optional<User> optionalUser = userRepo.findByEmail(email);
-    	return optionalUser.orElseGet(() -> null);
+		Optional<User> optionalUser = userRepo.findByEmail(email);
+		return optionalUser.orElseGet(() -> null);
     }
     
     public User updateUser(User newUser) {

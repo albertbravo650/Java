@@ -12,5 +12,10 @@ public class MainController {
 	public String index(HttpSession session) {
 		return "index.jsp";
 	}
+	
+	@GetMapping("/your_server")
+	public String counter(HttpSession session) {
+		return "counter.jsp";
+	}
 
 }

@@ -18,7 +18,10 @@
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-   <h1>Welcome User!</h1>
+	<h1 class="text-center">Welcome User!</h1>
+	<div class="link">
+		<a href="/your_server/counter">View count</a>
+	</div>	
 </body>
 </html>
 

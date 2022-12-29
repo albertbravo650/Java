@@ -18,8 +18,10 @@
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h1>You have visited http://your_server <c:out value="${showCount}"></c:out> times.</h1>
-	<a href="/your_server">Test another visit?</a>
+	<h1 class="text-center">You have visited http://your_server <c:out value="${showCount}"></c:out> times.</h1>
+	<div class="link">
+		<a href="/your_server">Test another visit?</a>
+	</div>
 </body>
 </html>
 

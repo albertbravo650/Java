@@ -24,6 +24,7 @@ public class MainController {
 	
 	@GetMapping("/your_server/counter")
 	public String counter(HttpSession session, Model model) {
+//		session.setAttribute("count", 0);
 		Integer currentCount = (Integer) session.getAttribute("count");
 		model.addAttribute("showCount", currentCount);
 		return "count.jsp";

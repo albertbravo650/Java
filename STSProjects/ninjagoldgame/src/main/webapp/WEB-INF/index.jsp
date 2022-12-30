@@ -21,31 +21,32 @@
 	<div class="container">
 		<div class="row">
 			<div class="header">
-				<h3>Your Gold: 0</h3>
+				<h3>Your Gold: <c:out value="${gold}"></c:out></h3>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col">
+			<div class="col box">
 				<h3>Farm</h3>
 				<p>(earns 10-20 gold)</p>
 				<form action="/action" method="post">
+					<input type="hidden" name="farmGold" value="10">
 					<input type="submit" value="Find Gold!">
 				</form>
 			</div>
-			<div class="col">
+			<div class="col box">
 				<h3>Cave</h3>
 			</div>
-			<div class="col">
+			<div class="col box">
 				<h3>House</h3>
 			</div>
-			<div class="col">
+			<div class="col box">
 				<h3>Quest</h3>
 			</div>
 		</div>
 		<div class="row">
 			<h3>Activities:</h3>
 		</div>
-		<div class="row">
+		<div class="row log">
 		</div>
 	</div>	
 </body>

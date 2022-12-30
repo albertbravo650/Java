@@ -27,6 +27,10 @@
 		<div class="row">
 			<div class="col">
 				<h3>Farm</h3>
+				<p>(earns 10-20 gold)</p>
+				<form action="/action" method="post">
+					<input type="submit" value="Find Gold!">
+				</form>
 			</div>
 			<div class="col">
 				<h3>Cave</h3>

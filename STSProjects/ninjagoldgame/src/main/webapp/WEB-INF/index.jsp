@@ -29,7 +29,7 @@
 				<h3>Farm</h3>
 				<p>(earns 10-20 gold)</p>
 				<form action="/action" method="post">
-					<input type="hidden" name="farmGold" value="10">
+					<input type="hidden" name="farmGold">
 					<input type="submit" value="Find Gold!">
 				</form>
 			</div>

@@ -25,7 +25,8 @@ public class Main {
 	@PostMapping("/action")
 	public String action(
 			HttpSession session,
-			@RequestParam(value="farmGold", required=false) Integer farmGold
+			@RequestParam(value="farmGold", required=false) Integer farmGold,
+			@RequestParam(value="caveGold", required=false) Integer caveGold
 			) {
 		Integer gold = (Integer) session.getAttribute("gold");
 		session.setAttribute("gold", farmGold + gold);

@@ -26,7 +26,9 @@ public class Main {
 	public String action(
 			HttpSession session,
 			@RequestParam(value="farmGold", required=false) Integer farmGold,
-			@RequestParam(value="caveGold", required=false) Integer caveGold
+			@RequestParam(value="caveGold", required=false) Integer caveGold,
+			@RequestParam(value="houseGold", required=false) Integer houseGold,
+			@RequestParam(value="questGold", required=false) Integer questGold
 			) {
 		Integer gold = (Integer) session.getAttribute("gold");
 		session.setAttribute("gold", farmGold + gold);

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class Main {
 	
+	@SuppressWarnings("unchecked")
 	@GetMapping("/")
 	public String index(HttpSession session) {
 		if(session.getAttribute("gold") == null) {

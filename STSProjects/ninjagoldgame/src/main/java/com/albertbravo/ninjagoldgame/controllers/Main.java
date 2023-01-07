@@ -1,9 +1,10 @@
 package com.albertbravo.ninjagoldgame.controllers;
 
+import java.util.Random;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -13,26 +14,31 @@ public class Main {
 //	@SuppressWarnings("unchecked")
 	@RequestMapping("/")
 	public String index(HttpSession session) {
+		int gold = 0;
 		if(session.getAttribute("gold") == null) {
-			session.setAttribute("gold", 0);
+			session.setAttribute("gold", gold);
 		}
 		else {
-			Integer gold = (Integer) session.getAttribute("gold");
-			session.setAttribute("gold", gold);
+			gold = (int) session.getAttribute("gold");
 		}
 		return "index.jsp";
 	}
 	
-	@PostMapping("/action")
+	@RequestMapping("/action")
 	public String action(
 			HttpSession session,
-			@RequestParam(value="farmGold", required=false) Integer farmGold,
-			@RequestParam(value="caveGold", required=false) Integer caveGold,
-			@RequestParam(value="houseGold", required=false) Integer houseGold,
-			@RequestParam(value="questGold", required=false) Integer questGold
+			@RequestParam(value="farmGold", required=false) String farmGold,
+			@RequestParam(value="caveGold", required=false) String caveGold,
+			@RequestParam(value="houseGold", required=false) String houseGold,
+			@RequestParam(value="questGold", required=false) String questGold
 			) {
-		Integer gold = (Integer) session.getAttribute("gold");
-		session.setAttribute("gold", farmGold + gold);
+		int gold = (int) session.getAttribute("gold");
+		if(farmGold!=null) {
+			int amount = new Random().nextInt(11)+10;
+			gold += amount;
+			session.setAttribute("gold", gold);
+			return "redirect:/";
+		}
 		return "redirect:/";
 	}
 

@@ -35,12 +35,27 @@
 			</div>
 			<div class="col box">
 				<h3>Cave</h3>
+				<p>(earns 10-20 gold)</p>
+				<form action="/action" method="post">
+					<input type="hidden" name="caveGold">
+					<input type="submit" value="Find Gold!">
+				</form>
 			</div>
 			<div class="col box">
 				<h3>House</h3>
+				<p>(earns 10-20 gold)</p>
+				<form action="/action" method="post">
+					<input type="hidden" name="houseGold">
+					<input type="submit" value="Find Gold!">
+				</form>
 			</div>
 			<div class="col box">
 				<h3>Quest</h3>
+				<p>(earns 10-20 gold)</p>
+				<form action="/action" method="post">
+					<input type="hidden" name="questGold">
+					<input type="submit" value="Find Gold!">
+				</form>
 			</div>
 		</div>
 		<div class="row">

@@ -39,6 +39,12 @@ public class Main {
 			session.setAttribute("gold", gold);
 			return "redirect:/";
 		}
+		if(caveGold!=null) {
+			int amount = new Random().nextInt(11)+10;
+			gold += amount;
+			session.setAttribute("gold", gold);
+			return "redirect:/";
+		}
 		return "redirect:/";
 	}
 
